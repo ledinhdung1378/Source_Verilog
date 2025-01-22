@@ -1,14 +1,14 @@
 module tb_register_4bit ;
 
 reg clk,clr,ce ; 
-reg d[3:0] ; 
-wire q[3:0] ; 
+reg [3:0] d; 
+wire [3:0] q; 
 
-register_4bit uut (.clk(clk),.clr(clr),.d(d),.q(q)) ; 
+register_4bit uut (.clk(clk),.clr(clr),.d(d),.q(q),.ce(ce)) ; 
 
 initial    
     begin 
-        clr = 0 ; 
+        clk = 0 ; 
         forever #5 clk = ~clk ; 
     end 
 
@@ -17,7 +17,7 @@ initial
         clr = 0 ;
         ce = 0 ;
         d = 4'b1011 ; 
-        #10 ; 
+        #8 ; 
         ce = 1 ; 
         d = 4'b1000 ; 
         #10 ;
@@ -31,4 +31,4 @@ initial
         $finish ; 
     end 
 
-endmodule ;     
+endmodule      
